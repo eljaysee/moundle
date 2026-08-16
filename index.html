@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Moundle — the daily Haunted Mound song game. Guess the song and use the artist and album hints."
+    />
+    <title>MOUNDLE</title>
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="header">
+        <h1 class="logo">Moundle</h1>
+        <p class="tagline">Guess today&rsquo;s Haunted Mound song</p>
+        <p class="date" id="date"></p>
+      </header>
+
+      <p class="help">
+        Type a song title. Green tells you when the <strong>artist</strong> or
+        <strong>album</strong> matches. Six tries to find the song.
+      </p>
+
+      <div class="legend" aria-hidden="true">
+        <span>Song</span>
+        <span>Artist</span>
+        <span>Album</span>
+      </div>
+
+      <section class="board" id="board" aria-label="Guesses"></section>
+
+      <p class="attempts" id="attempts" aria-live="polite"></p>
+
+      <form class="form" id="guess-form" autocomplete="off">
+        <label class="sr-only" for="guess-input">Song title</label>
+        <input
+          id="guess-input"
+          name="guess"
+          type="text"
+          list="songs-list"
+          placeholder="Type a song title…"
+          maxlength="80"
+          enterkeyhint="go"
+        />
+        <datalist id="songs-list"></datalist>
+        <button class="btn btn-primary" type="submit">Guess</button>
+      </form>
+
+      <p class="error" id="error" role="alert"></p>
+
+      <button class="btn btn-ghost" id="give-up" type="button">Give up</button>
+
+      <section class="result" id="result" hidden></section>
+
+      <footer class="footer">
+        One song every day &middot; a fan-made game &middot; not affiliated with Haunted Mound
+      </footer>
+    </main>
+
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>
